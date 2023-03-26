@@ -1,0 +1,22 @@
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+}
+
+.cart-total {
+    justify-self: end;
+}
+
+.cart-button {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    justify-self: end;
+}
+
+.cart-button i {
+    font-size: 1.2em;
+}
+
