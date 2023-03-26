@@ -1,19 +1,25 @@
-<div *ngFor="let product of products">
-  <h3>
-    <a [title]="product.title">
-      {{product.title}}
-    </a>
-  </h3>
-  <div class="product-images">
-    <img *ngFor="let image of product.images" [src]="image" alt="product.title">
-  </div>
-  <p *ngIf="product.description">
-    Description: {{ product.description }}
-  </p>
-  <p>
-    $ {{ product.price }}
-  </p>
-  <button type="button" (click)="addToCart()">
-    +
-  </button>
+<div class="product-grid">
+    <div *ngFor="let product of products" class="product-grid-item">
+        <div class="card">
+            <div class="card-header">
+                <a [title]="product.title">
+                    {{product.title}}
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="product-images">
+                    <img *ngFor="let image of product.images" [src]="image" alt="product.description">
+                </div>
+                <p *ngIf="product.description">
+                    Description: {{ product.description }}
+                </p>
+            </div>
+            <div class="card-footer">
+                $ {{ product.price }}
+                <button type="button" (click)="addToCart()">
+                    +
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
