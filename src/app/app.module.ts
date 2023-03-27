@@ -7,23 +7,24 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {CartService} from "./services/cart.service";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductListComponent,
-    HeaderComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {path: '', component: ProductListComponent},
-    ])
-  ],
-  providers: [HttpClient],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ProductListComponent,
+        HeaderComponent,
+        FooterComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule.forRoot([
+            {path: '', component: ProductListComponent},
+        ])
+    ],
+    providers: [HttpClient, CartService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
