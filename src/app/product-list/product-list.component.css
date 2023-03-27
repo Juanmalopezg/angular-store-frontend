@@ -29,3 +29,21 @@
     object-fit: contain;
 }
 
+.price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.button-container {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+

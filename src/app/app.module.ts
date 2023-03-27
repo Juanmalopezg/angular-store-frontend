@@ -8,7 +8,11 @@ import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CartService} from "./services/cart.service";
-import { CartModalComponent } from './cart-modal/cart-modal.component';
+import {CartModalComponent} from './cart-modal/cart-modal.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+
 
 @NgModule({
     declarations: [
@@ -23,7 +27,9 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
         HttpClientModule,
         RouterModule.forRoot([
             {path: '', component: ProductListComponent},
-        ])
+        ]),
+        BrowserAnimationsModule,
+        MatCardModule,MatButtonModule
     ],
     providers: [HttpClient, CartService],
     bootstrap: [AppComponent]
