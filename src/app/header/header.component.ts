@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {CartItem} from "../models/cart.model";
+import {CartModalComponent} from "../cart-modal/cart-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-header',
@@ -11,7 +13,7 @@ export class HeaderComponent implements OnInit {
     cartTotal: number = 0;
     showModal: boolean = false;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService, public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -20,7 +22,10 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    openCart() {
-        this.showModal = true;
+    openDialog(): void {
+        this.dialog.open(CartModalComponent, {
+            width: '75vw',
+            data: {cartTotal: this.cartTotal}
+        });
     }
 }

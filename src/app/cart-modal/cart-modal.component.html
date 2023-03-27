@@ -1,20 +1,26 @@
-<div class="cart-modal">
-    <div class="modal-header">
-        <h2>Cart</h2>
-        <button (click)="closeModal()">Close</button>
+<div class="dialog-header">
+    <h2 mat-dialog-title>Cart</h2>
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <ul>
+        <li *ngFor="let item of cart">
+            <span>{{ item.product.title }}</span>
+            <span>${{ item.product.price * item.quantity }}</span>
+            <button mat-icon-button (click)="removeFromCart(item.product)">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <button mat-icon-button (click)="addToCart(item.product)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </li>
+    </ul>
+    <div class="total-container">
+        <p class="total">Total: ${{ cartTotal }}</p>
     </div>
-    <div class="modal-body">
-        <ul>
-            <li *ngFor="let item of cart">
-                <span>{{ item.product.title }}</span>
-                <span>${{ item.product.price * item.quantity }}</span>
-                <button (click)="removeFromCart(item.product)">-</button>
-                <button (click)="addToCart(item.product)">+</button>
-            </li>
-        </ul>
-    </div>
-    <div class="modal-footer">
-        <p>Total: ${{ cartTotal }}</p>
-        <button (click)="checkout()">Checkout</button>
-    </div>
+</div>
+<div mat-dialog-actions class="actions">
+    <button mat-raised-button (click)="checkout()">Checkout</button>
 </div>

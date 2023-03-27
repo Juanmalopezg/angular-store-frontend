@@ -12,6 +12,9 @@ import {CartModalComponent} from './cart-modal/cart-modal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -29,7 +32,7 @@ import {MatButtonModule} from "@angular/material/button";
             {path: '', component: ProductListComponent},
         ]),
         BrowserAnimationsModule,
-        MatCardModule,MatButtonModule
+        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule
     ],
     providers: [HttpClient, CartService],
     bootstrap: [AppComponent]

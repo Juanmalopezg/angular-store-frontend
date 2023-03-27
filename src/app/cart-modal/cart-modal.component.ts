@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Product} from '../models/product.model';
 import {CartItem} from "../models/cart.model";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-cart-modal',
@@ -12,7 +13,8 @@ export class CartModalComponent {
     cart: CartItem[] = [];
     cartTotal: number = 0;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService, public dialogRef: MatDialogRef<CartModalComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: any) {
         this.cartService.getItems().subscribe((items: CartItem[]) => {
             this.cart = items;
             this.cartTotal = this.cartService.getTotal();
@@ -28,10 +30,6 @@ export class CartModalComponent {
     }
 
     checkout() {
-
-    }
-
-    closeModal() {
 
     }
 }

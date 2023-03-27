@@ -1,9 +1,7 @@
-<div class="header-container">
-    <h1>My Store</h1>
-    <button class="cart-button" (click)="openCart()">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span>Cart Total: ${{ cartTotal }}</span>
-    </button>
-</div>
-
-<app-cart-modal *ngIf="showModal"></app-cart-modal>
+<mat-toolbar class="header-container">
+        <span>My Store</span>
+        <button mat-button color="primary" (click)="openDialog()">
+            <mat-icon>shopping_cart</mat-icon>
+            <span>Cart Total: ${{ cartTotal }}</span>
+        </button>
+</mat-toolbar>
