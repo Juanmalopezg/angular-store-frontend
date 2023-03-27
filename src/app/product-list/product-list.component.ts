@@ -1,45 +1,45 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  images: string[];
-  creationAt: string;
-  updatedAt: string;
-  category: Category;
-}
-
-export interface Category {
-  id: number;
-  name: string;
-  image: string;
-  creationAt: string;
-  updatedAt: string;
-}
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Product} from '../models/product.model';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+    products: Product[] = [];
+    order: 'asc' | 'desc' = 'asc';
 
-  sortOption: string = 'priceLowToHigh';
+    constructor(private http: HttpClient,
+    ) {
+    }
 
-  constructor(private http: HttpClient) {
-  }
+    ngOnInit(): void {
+        const params = new HttpParams()
+            .set('page', '1')
+            .set('limit', '12');
 
-  ngOnInit(): void {
-    this.http.get<Product[]>('http://localhost:3000/products').subscribe((data: Product[]) => {
-      this.products = data;
-    });
-  }
+        this.http.get<Product[]>('http://localhost:3000/products', {params})
+            .subscribe((data: Product[]) => {
+                this.products = data.sort((a, b) => {
+                    return a.price - b.price;
+                });
+            });
+    }
 
-  addToCart() {
+    addToCart(product: Product) {
 
-  }
+    }
+
+    toggleOrder() {
+        this.order = this.order === 'asc' ? 'desc' : 'asc';
+        this.products = this.products.sort((a, b) => {
+            if (this.order === 'asc') {
+                return a.price - b.price;
+            } else {
+                return b.price - a.price;
+            }
+        });
+    }
 }
