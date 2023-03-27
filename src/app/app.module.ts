@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {ProductListComponent} from './product-list/product-list.component';
 import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CartService} from "./services/cart.service";
@@ -17,6 +16,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
+import {NgxStripeModule} from "ngx-stripe";
+import {CheckoutModalComponent} from './checkout-modal/checkout-modal.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
@@ -24,8 +27,9 @@ import {MatSelectModule} from "@angular/material/select";
         AppComponent,
         ProductListComponent,
         HeaderComponent,
-        FooterComponent,
-        CartModalComponent
+        CartModalComponent,
+        CheckoutModalComponent,
+        PaymentSuccessComponent,
     ],
     imports: [
         BrowserModule,
@@ -34,7 +38,9 @@ import {MatSelectModule} from "@angular/material/select";
             {path: '', component: ProductListComponent},
         ]),
         BrowserAnimationsModule,
-        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule, MatInputModule, MatSelectModule
+        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule, MatInputModule, MatSelectModule,
+        NgxStripeModule.forRoot('pk_test_TYooMQauvdEDq54NiTphI7jx'),
+        MatStepperModule,
     ],
     providers: [HttpClient, CartService],
     bootstrap: [AppComponent]

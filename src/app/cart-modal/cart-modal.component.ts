@@ -2,7 +2,9 @@ import {Component, Inject} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Product} from '../models/product.model';
 import {CartItem} from "../models/cart.model";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {CheckoutModalComponent} from "../checkout-modal/checkout-modal.component";
+
 
 @Component({
     selector: 'app-cart-modal',
@@ -14,7 +16,7 @@ export class CartModalComponent {
     cartTotal: number = 0;
 
     constructor(private cartService: CartService, public dialogRef: MatDialogRef<CartModalComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+                @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) {
         this.cartService.getItems().subscribe((items: CartItem[]) => {
             this.cart = items;
             this.cartTotal = this.cartService.getTotal();
@@ -29,7 +31,9 @@ export class CartModalComponent {
         this.cartService.removeFromCart(product);
     }
 
-    checkout() {
-
+    openCheckoutDialog() {
+        this.dialog.open(CheckoutModalComponent, {
+            width: '50vw',
+        });
     }
 }

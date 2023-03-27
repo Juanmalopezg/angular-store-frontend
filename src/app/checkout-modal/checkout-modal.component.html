@@ -1,0 +1,13 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>Checkout</h2>
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <ngx-stripe-card [options]="cardOptions"></ngx-stripe-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="pay()">Pay</button>
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+</mat-dialog-actions>
