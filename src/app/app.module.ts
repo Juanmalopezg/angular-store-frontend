@@ -8,13 +8,15 @@ import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CartService} from "./services/cart.service";
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ProductListComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        CartModalComponent
     ],
     imports: [
         BrowserModule,

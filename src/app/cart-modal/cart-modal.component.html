@@ -1,0 +1,20 @@
+<div class="cart-modal">
+    <div class="modal-header">
+        <h2>Cart</h2>
+        <button (click)="closeModal()">Close</button>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li *ngFor="let item of cart">
+                <span>{{ item.product.title }}</span>
+                <span>${{ item.product.price * item.quantity }}</span>
+                <button (click)="removeFromCart(item.product)">-</button>
+                <button (click)="addToCart(item.product)">+</button>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <p>Total: ${{ cartTotal }}</p>
+        <button (click)="checkout()">Checkout</button>
+    </div>
+</div>
