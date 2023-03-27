@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Product} from '../models/product.model';
 import {CartService} from "../services/cart.service";
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
     selector: 'app-product-list',
@@ -15,25 +14,10 @@ export class ProductListComponent implements OnInit {
     isWeb: boolean = false;
     isMobile: boolean = false;
 
-    constructor(private http: HttpClient, private cartService: CartService, private breakpointObserver: BreakpointObserver) {
+    constructor(private http: HttpClient, private cartService: CartService) {
     }
 
     ngOnInit(): void {
-        this.breakpointObserver.observe([
-            Breakpoints.WebLandscape,
-            Breakpoints.WebPortrait
-        ]).subscribe(result => {
-            this.isWeb = result.matches;
-        });
-
-        this.breakpointObserver.observe([
-            Breakpoints.Handset,
-            Breakpoints.TabletPortrait,
-            Breakpoints.TabletLandscape
-        ]).subscribe(result => {
-            this.isMobile = result.matches;
-        });
-
         const params = new HttpParams()
             .set('page', '1')
             .set('limit', '12');

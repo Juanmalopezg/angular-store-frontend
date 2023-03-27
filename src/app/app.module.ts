@@ -15,6 +15,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -32,7 +34,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
             {path: '', component: ProductListComponent},
         ]),
         BrowserAnimationsModule,
-        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule
+        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule, MatInputModule, MatSelectModule
     ],
     providers: [HttpClient, CartService],
     bootstrap: [AppComponent]

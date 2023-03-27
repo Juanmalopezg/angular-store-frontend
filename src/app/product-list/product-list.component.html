@@ -1,4 +1,10 @@
-<button (click)="toggleOrder()">Price {{order === 'asc' ? 'low to high' : 'high to low'}}</button>
+<mat-form-field>
+    <mat-label>Order by price</mat-label>
+    <mat-select [(value)]="order" (selectionChange)="toggleOrder()">
+        <mat-option value="asc">Price low to high</mat-option>
+        <mat-option value="desc">Price high to low</mat-option>
+    </mat-select>
+</mat-form-field>
 
 <div [ngClass]="{'product-grid': true, 'four-columns': isWeb, 'two-columns': isMobile}">
     <mat-card *ngFor="let product of products">
