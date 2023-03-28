@@ -1,0 +1,17 @@
+.total-container {
+    text-align: right;
+    margin-top: 16px;
+}
+
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-dialog-content {
+    align-items: center;
+}
+
+.add-item{
+    color: #60992d;
+}

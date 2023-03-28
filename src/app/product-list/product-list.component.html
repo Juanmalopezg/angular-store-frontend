@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="controls">
+        <mat-form-field>
+            <mat-label>Order by price</mat-label>
+            <mat-select [(value)]="sortBy" (selectionChange)=" getProducts()">
+                <mat-option value="asc">Price low to high</mat-option>
+                <mat-option value="desc">Price high to low</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="paginator">
+            <button mat-raised-button class="change-page" [disabled]="page==1" (click)="getPrevPage()">Prev Page</button>
+            <button mat-raised-button class="change-page" (click)="getNextPage()">Next Page</button>
+        </div>
+    </div>
+    <div *ngIf="loading" class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="product-grid" *ngIf="!loading">
+        <mat-card *ngFor="let product of products">
+            <mat-card-header>
+                <mat-card-title>{{ product.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="product-images">
+                    <img *ngFor="let image of product.images" [src]="image" alt="product.description">
+                </div>
+                <p *ngIf="product.description">Description: {{ product.description }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="price-container">
+                    <span class="product-price">$ {{ product.price }}</span>
+                </div>
+                <div class="button-container">
+                    <button mat-flat-button class="add-to-cart" (click)="addToCart(product)">Add to Cart</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
