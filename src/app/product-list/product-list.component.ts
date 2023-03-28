@@ -10,23 +10,28 @@ import {CartService} from "../services/cart.service";
 })
 export class ProductListComponent implements OnInit {
     products: Product[] = [];
-    order: 'asc' | 'desc' = 'asc';
+    sortBy: 'asc' | 'desc' = 'asc';
     isWeb: boolean = false;
     isMobile: boolean = false;
+    page: number = 1;
+    limit: number = 12;
 
     constructor(private http: HttpClient, private cartService: CartService) {
     }
 
     ngOnInit(): void {
+        this.getProducts();
+    }
+
+    getProducts() {
         const params = new HttpParams()
-            .set('page', '1')
-            .set('limit', '12');
+            .set('page', this.page.toString())
+            .set('limit', this.limit.toString())
+            .set('sortBy', this.sortBy);
 
         this.http.get<Product[]>('http://localhost:3000/products', {params})
             .subscribe((data: Product[]) => {
-                this.products = data.sort((a, b) => {
-                    return a.price - b.price;
-                });
+                this.products = data;
             });
     }
 
@@ -34,14 +39,13 @@ export class ProductListComponent implements OnInit {
         this.cartService.addToCart(product);
     }
 
-    toggleOrder() {
-        this.order = this.order === 'asc' ? 'desc' : 'asc';
-        this.products = this.products.sort((a, b) => {
-            if (this.order === 'asc') {
-                return a.price - b.price;
-            } else {
-                return b.price - a.price;
-            }
-        });
+    getNextPage() {
+        this.page++;
+        this.getProducts();
+    }
+
+    getPrevPage() {
+        this.page--;
+        this.getProducts();
     }
 }
