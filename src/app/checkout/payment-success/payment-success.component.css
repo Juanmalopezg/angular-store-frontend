@@ -1,6 +1,6 @@
 .check {
     font-size: 3vw;
-    color: green;
+    color: #60992d;
     height: 3vw;
     width: 3vw;
 }
@@ -15,7 +15,7 @@ mat-dialog-content {
 @media (max-width: 767px) {
     .check {
         font-size: 5vw;
-        color: green;
+        color: #64dd17;
         height: 5vw;
         width: 5vw;
     }

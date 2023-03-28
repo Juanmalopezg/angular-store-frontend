@@ -31,7 +31,7 @@
                 <button mat-icon-button color="primary" (click)="removeFromCart(item.product)">
                     <mat-icon>remove</mat-icon>
                 </button>
-                <button mat-icon-button color="primary" (click)="addToCart(item.product)">
+                <button mat-icon-button class="add-item" (click)="addToCart(item.product)">
                     <mat-icon>add</mat-icon>
                 </button>
             </td>
@@ -40,8 +40,6 @@
         <tr mat-header-row *matHeaderRowDef="['product','price', 'quantity', 'total', 'actions']"></tr>
         <tr mat-row *matRowDef="let item; columns: ['product','price', 'quantity', 'total', 'actions']"></tr>
     </table>
-
-
     <div class="total-container">
         <p>Total Price: ${{ cartTotal }}</p>
     </div>

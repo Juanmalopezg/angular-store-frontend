@@ -59,9 +59,10 @@ mat-card {
 
 .price-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
+    color: #03b5aa;
 }
 
 .product-price {
@@ -75,7 +76,16 @@ mat-card {
     text-align: center;
 }
 
-.spinner{
+.add-to-cart {
+    background-color: #60992d;
+}
+
+.change-page {
+    background-color: #63A088;
+
+}
+
+.spinner {
     display: flex;
     justify-content: center;
 }

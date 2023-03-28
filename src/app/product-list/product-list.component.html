@@ -8,8 +8,8 @@
             </mat-select>
         </mat-form-field>
         <div class="paginator">
-            <button mat-raised-button color="primary" [disabled]="page==1" (click)="getPrevPage()">Prev Page</button>
-            <button mat-raised-button color="primary" (click)="getNextPage()">Next Page</button>
+            <button mat-raised-button class="change-page" [disabled]="page==1" (click)="getPrevPage()">Prev Page</button>
+            <button mat-raised-button class="change-page" (click)="getNextPage()">Next Page</button>
         </div>
     </div>
     <div *ngIf="loading" class="spinner">
@@ -31,7 +31,7 @@
                     <span class="product-price">$ {{ product.price }}</span>
                 </div>
                 <div class="button-container">
-                    <button mat-flat-button color="primary" (click)="addToCart(product)">Add to Cart</button>
+                    <button mat-flat-button class="add-to-cart" (click)="addToCart(product)">Add to Cart</button>
                 </div>
             </mat-card-actions>
         </mat-card>
