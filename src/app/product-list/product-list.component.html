@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="menu">
+    <div class="controls">
         <mat-form-field>
             <mat-label>Order by price</mat-label>
             <mat-select [(value)]="sortBy" (selectionChange)=" getProducts()">
@@ -12,7 +12,10 @@
             <button mat-raised-button color="primary" (click)="getNextPage()">Next Page</button>
         </div>
     </div>
-    <div [ngClass]="{'product-grid': true, 'four-columns': isWeb, 'two-columns': isMobile}">
+    <div *ngIf="loading" class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="product-grid" *ngIf="!loading">
         <mat-card *ngFor="let product of products">
             <mat-card-header>
                 <mat-card-title>{{ product.title }}</mat-card-title>
@@ -34,6 +37,3 @@
         </mat-card>
     </div>
 </div>
-
-
-

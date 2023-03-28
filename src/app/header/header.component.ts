@@ -11,7 +11,6 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class HeaderComponent implements OnInit {
     cartTotal: number = 0;
-    showModal: boolean = false;
 
     constructor(private cartService: CartService, public dialog: MatDialog) {
     }

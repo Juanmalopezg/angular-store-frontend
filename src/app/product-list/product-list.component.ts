@@ -11,8 +11,7 @@ import {CartService} from "../services/cart.service";
 export class ProductListComponent implements OnInit {
     products: Product[] = [];
     sortBy: 'asc' | 'desc' = 'asc';
-    isWeb: boolean = false;
-    isMobile: boolean = false;
+    loading: boolean = true;
     page: number = 1;
     limit: number = 12;
 
@@ -24,6 +23,7 @@ export class ProductListComponent implements OnInit {
     }
 
     getProducts() {
+        this.loading = true;
         const params = new HttpParams()
             .set('page', this.page.toString())
             .set('limit', this.limit.toString())
@@ -32,8 +32,10 @@ export class ProductListComponent implements OnInit {
         this.http.get<Product[]>('http://localhost:3000/products', {params})
             .subscribe((data: Product[]) => {
                 this.products = data;
+                this.loading = false;
             });
     }
+
 
     addToCart(product: Product) {
         this.cartService.addToCart(product);

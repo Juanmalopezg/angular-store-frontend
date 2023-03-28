@@ -20,7 +20,8 @@ import {NgxStripeModule} from "ngx-stripe";
 import {CheckoutModalComponent} from './checkout-modal/checkout-modal.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import {MatStepperModule} from "@angular/material/stepper";
-
+import {MatTableModule} from "@angular/material/table";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
     declarations: [
@@ -40,7 +41,7 @@ import {MatStepperModule} from "@angular/material/stepper";
         BrowserAnimationsModule,
         MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule, MatInputModule, MatSelectModule,
         NgxStripeModule.forRoot('pk_test_TYooMQauvdEDq54NiTphI7jx'),
-        MatStepperModule,
+        MatStepperModule, MatTableModule, MatProgressSpinnerModule,
     ],
     providers: [HttpClient, CartService],
     bootstrap: [AppComponent]

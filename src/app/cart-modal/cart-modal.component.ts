@@ -15,7 +15,7 @@ export class CartModalComponent {
     cart: CartItem[] = [];
     cartTotal: number = 0;
 
-    constructor(private cartService: CartService, public dialogRef: MatDialogRef<CartModalComponent>,
+    constructor(public cartService: CartService, public dialogRef: MatDialogRef<CartModalComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog) {
         this.cartService.getItems().subscribe((items: CartItem[]) => {
             this.cart = items;
@@ -29,7 +29,9 @@ export class CartModalComponent {
 
     removeFromCart(product: Product) {
         this.cartService.removeFromCart(product);
+        this.cartTotal = this.cartService.getTotal();
     }
+
 
     openCheckoutDialog() {
         this.dialog.open(CheckoutModalComponent, {

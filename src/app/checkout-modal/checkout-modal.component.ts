@@ -39,7 +39,9 @@ export class CheckoutModalComponent {
             } else {
                 this.dialog.open(PaymentSuccessComponent, {
                     panelClass: 'custom-dialog', // Agrega la clase personalizada aquí
-                    enterAnimationDuration: 2
+                    width: '50vw',
+                    height: '50vw',
+                    exitAnimationDuration: 2
                 });
             }
         });
