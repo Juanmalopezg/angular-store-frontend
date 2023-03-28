@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
-import {CartService} from '../services/cart.service';
-import {Product} from '../models/product.model';
-import {CartItem} from "../models/cart.model";
+import {CartService} from '../../services/cart.service';
+import {Product} from '../../models/product.model';
+import {CartItem} from "../../models/cart.model";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {CheckoutModalComponent} from "../checkout-modal/checkout-modal.component";
+import {PaymentModalComponent} from "../payment-modal/payment-modal.component";
 
 
 @Component({
@@ -34,8 +34,8 @@ export class CartModalComponent {
 
 
     openCheckoutDialog() {
-        this.dialog.open(CheckoutModalComponent, {
-            width: '50vw',
+        this.dialog.open(PaymentModalComponent, {
+            width: '50vw'
         });
     }
 }

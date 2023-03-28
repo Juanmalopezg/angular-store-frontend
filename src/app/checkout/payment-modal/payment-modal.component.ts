@@ -4,11 +4,11 @@ import {MatDialog} from "@angular/material/dialog";
 import {PaymentSuccessComponent} from "../payment-success/payment-success.component";
 
 @Component({
-    selector: 'app-checkout-modal',
-    templateUrl: './checkout-modal.component.html',
-    styleUrls: ['./checkout-modal.component.css']
+    selector: 'app-payment-modal',
+    templateUrl: './payment-modal.component.html',
+    styleUrls: ['./payment-modal.component.css']
 })
-export class CheckoutModalComponent {
+export class PaymentModalComponent {
     @ViewChild(StripeCardComponent) card!: StripeCardComponent;
 
     cardOptions = {
@@ -38,10 +38,8 @@ export class CheckoutModalComponent {
                 console.log('error')
             } else {
                 this.dialog.open(PaymentSuccessComponent, {
-                    panelClass: 'custom-dialog', // Agrega la clase personalizada aquí
-                    width: '50vw',
-                    height: '50vw',
-                    exitAnimationDuration: 2
+                    width: '15vw',
+                    exitAnimationDuration: 5
                 });
             }
         });

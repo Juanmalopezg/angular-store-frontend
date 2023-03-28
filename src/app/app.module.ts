@@ -7,7 +7,7 @@ import {HeaderComponent} from './header/header.component';
 import {RouterModule} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CartService} from "./services/cart.service";
-import {CartModalComponent} from './cart-modal/cart-modal.component';
+import {CartModalComponent} from './checkout/cart-modal/cart-modal.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
@@ -17,8 +17,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {NgxStripeModule} from "ngx-stripe";
-import {CheckoutModalComponent} from './checkout-modal/checkout-modal.component';
-import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import {PaymentModalComponent} from './checkout/payment-modal/payment-modal.component';
+import {PaymentSuccessComponent} from './checkout/payment-success/payment-success.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatTableModule} from "@angular/material/table";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
@@ -29,22 +29,34 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
         ProductListComponent,
         HeaderComponent,
         CartModalComponent,
-        CheckoutModalComponent,
+        PaymentModalComponent,
         PaymentSuccessComponent,
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        RouterModule.forRoot([
-            {path: '', component: ProductListComponent},
-        ]),
+        RouterModule.forRoot([{path: '', component: ProductListComponent}]),
         BrowserAnimationsModule,
-        MatCardModule, MatButtonModule, MatIconModule, MatDialogModule, MatToolbarModule, MatInputModule, MatSelectModule,
+
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatSelectModule,
         NgxStripeModule.forRoot('pk_test_TYooMQauvdEDq54NiTphI7jx'),
-        MatStepperModule, MatTableModule, MatProgressSpinnerModule,
+        MatStepperModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
     ],
-    providers: [HttpClient, CartService],
-    bootstrap: [AppComponent]
+    providers: [
+        HttpClient,
+        CartService,
+    ],
+    bootstrap: [
+        AppComponent,
+    ],
 })
 export class AppModule {
 }

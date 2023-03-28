@@ -1,0 +1,25 @@
+.check {
+    font-size: 3vw;
+    color: green;
+    height: 3vw;
+    width: 3vw;
+}
+
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .check {
+        font-size: 5vw;
+        color: green;
+        height: 5vw;
+        width: 5vw;
+    }
+    p {
+        display: none;
+    }
+}

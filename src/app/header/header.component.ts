@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {CartItem} from "../models/cart.model";
-import {CartModalComponent} from "../cart-modal/cart-modal.component";
+import {CartModalComponent} from "../checkout/cart-modal/cart-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({

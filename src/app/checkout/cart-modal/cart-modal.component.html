@@ -8,7 +8,7 @@
     </button>
 </div>
 <mat-dialog-content>
-    <table mat-table [dataSource]="cartService.getItems()">
+    <table mat-table [dataSource]="cartService.getItems()" class="mat-elevation-z8">
         <ng-container matColumnDef="product">
             <th mat-header-cell *matHeaderCellDef> Product Name </th>
             <td mat-cell *matCellDef="let item"> {{ item.product.title }} </td>
@@ -48,7 +48,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button mat-raised-button color="accent" (click)="openCheckoutDialog()">Checkout</button>
+    <button mat-raised-button color="primary" (click)="openCheckoutDialog()">Checkout
+        <mat-icon>payment</mat-icon></button>
 </mat-dialog-actions>
 
 
